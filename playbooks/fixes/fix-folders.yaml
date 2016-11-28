@@ -1,0 +1,6 @@
+---
+- hosts: games-platform
+  become: True
+  tasks: 
+  - name: Fix hosts file permissions
+    file: path=/home/assets/platform/logs state=directory owner=tomcat group=tomcat mode=0755

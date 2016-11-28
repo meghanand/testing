@@ -1,0 +1,14 @@
+---
+- hosts: web-redis
+  become: True
+  tasks: 
+  - name: Fix hosts file permissions
+    file: path=/etc/hosts mode=0644
+  - name: Redis service 1
+    service: name='{{p1}}' state=started enabled=yes
+   
+  
+
+  
+  
+

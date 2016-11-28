@@ -1,0 +1,10 @@
+---
+- hosts: test
+  become: True
+  tasks: 
+  - name: Starting tomcat
+    shell: nohup /etc/init.d/tomcat start 
+    args: 
+     executable: "/bin/bash"
+    register: result
+  - debug: var=result

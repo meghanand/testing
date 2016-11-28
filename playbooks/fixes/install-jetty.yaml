@@ -1,0 +1,19 @@
+---
+- hosts: jetty-servers
+  become: True
+  tasks: 
+  - name: Creating folders
+    file: path=/sources/install state=directory
+  - name: Copying assents
+    synchronize: src=/common/softwares/Jetty dest=/sources/install owner=yes group=yes
+  - name: Installing Jetty
+    shell: cd /sources/install/Jetty; bash install-jetty.sh
+    ignore_errors: yes
+  - name: Configuring scripts.
+    copy: src=/common/softwares/Jetty/files/jetty dest=/etc/init.d/jetty owner=root group=root mode=755
+   
+  
+
+  
+  
+
